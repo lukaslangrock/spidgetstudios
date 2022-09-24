@@ -1,10 +1,11 @@
+using System.Xml.Schema;
 using System;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControl : MonoBehaviour
+public class CarControls : MonoBehaviour
 {
 	private float speed;
 	private float rotation;
@@ -16,6 +17,7 @@ public class CarControl : MonoBehaviour
 	public float Acceleration = 1;
 	public float BreakForce = 10;
 	public float SteerStraighteningPower = 2f;
+	public float AbruptBreak =2;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -29,6 +31,7 @@ public class CarControl : MonoBehaviour
 		float InRot = Input.GetAxis("Horizontal");
 		float InSp = Input.GetAxis("Vertical");
 
+		// Steering
 		if(InRot==0)
 		{
 			if(speed!=0)
@@ -44,9 +47,9 @@ public class CarControl : MonoBehaviour
 			rotation += InRot;
 		}
 
-		rotation -= 0.1f*InRot*Time.deltaTime;
+		rotation -= InRot*Time.deltaTime;
 
-		if(Input.GetAxis("Jump")>0)
+		if(Input.GetAxis("Jump")>0) //Breaking
 		{ 
 			if(speed>0)
 			{
@@ -59,10 +62,10 @@ public class CarControl : MonoBehaviour
 				speed = Mathf.Clamp(speed, MaxBackwardSpeed, 0);
 			}
 
-			if(Mathf.Abs(speed)<2f)
+			if(Mathf.Abs(speed)<AbruptBreak)
 				speed = 0;
 		}
-		else if(InSp == 0)
+		else if(InSp == 0) //Engine Breaking
 		{
 			if(speed>0)
 			{
@@ -75,7 +78,7 @@ public class CarControl : MonoBehaviour
 				speed = Mathf.Clamp(speed, MaxBackwardSpeed, 0);
 			}
 		}
-		else if(InSp>0)
+		else if(InSp>0) // Acceleration
 		{
 			speed += Acceleration;
 		}
@@ -85,15 +88,16 @@ public class CarControl : MonoBehaviour
 		}
 
 
-		if(Mathf.Abs(speed)<0.1f)
+		if(Mathf.Abs(speed)<0.1f) // Abrupt break
 			speed=0;
 
-		if(Mathf.Abs(rotation)<0.1f)
+		if(Mathf.Abs(rotation)<0.1f) // Abrupt straightening
 			rotation=0;
 
+		// Max values
 		rotation = Mathf.Clamp(rotation, MaxLeftSteer, MaxRightSteer);
 		speed = Mathf.Clamp(speed, MaxBackwardSpeed, MaxForwardSpeed);
-		if(speed>0)
+		if(speed>0) //Moving and rotating the car
 		{
 			transform.Translate(UnityEngine.Vector3.forward * Mathf.Sqrt(speed) * Time.deltaTime);
 			transform.Rotate(0f,rotation*Time.deltaTime,0f);
