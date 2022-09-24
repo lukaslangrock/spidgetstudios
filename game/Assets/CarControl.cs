@@ -24,7 +24,7 @@ public class CarControl : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		float InRot = Input.GetAxis("Horizontal");
 		float InSp = Input.GetAxis("Vertical");
