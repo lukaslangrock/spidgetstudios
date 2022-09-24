@@ -356,7 +356,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7118762931400538822, guid: 3201962d4d6aec94fbfe2d6cc7a9a2d1, type: 3}
       propertyPath: m_Name
-      value: Sedan
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7552435824307683609, guid: 3201962d4d6aec94fbfe2d6cc7a9a2d1, type: 3}
       propertyPath: m_RootOrder
@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7552435824307683609, guid: 3201962d4d6aec94fbfe2d6cc7a9a2d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 7552435824307683609, guid: 3201962d4d6aec94fbfe2d6cc7a9a2d1, type: 3}
       propertyPath: m_LocalPosition.y
