@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControls : MonoBehaviour
+public class CarController : MonoBehaviour
 {
 	private float speed;
 	private float rotation;
