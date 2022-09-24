@@ -1,9 +1,11 @@
 using System.Xml.Schema;
 using System;
+using System.Threading;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 
 public class CarController : MonoBehaviour
 {
@@ -23,6 +25,11 @@ public class CarController : MonoBehaviour
 	public LayerMask layerMask;
 	public Transform groundCheck;
 
+	//Variablen für explosionen
+	public GameObject boom;
+	public GameObject car;
+	public Transform spawnPoint;
+	private bool exploded = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -37,9 +44,24 @@ public class CarController : MonoBehaviour
 		if (OnGround())
 		{
 			Drive();
+			exploded = false;
+		}
+		if (Input.GetAxis("Fire1") != 0 && exploded == false) {
+			Explode();
 		}
 	}
 
+    private void Explode() 
+	{
+		exploded = true;
+		Instantiate(boom, transform.position, Quaternion.identity);
+
+
+		transform.position = spawnPoint.position;
+		transform.rotation = spawnPoint.rotation;
+		speed = 0;
+
+	}
 	bool OnGround()
 	{
 		return Physics.CheckSphere(groundCheck.position, 1f, layerMask);
