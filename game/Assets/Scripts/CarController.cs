@@ -44,22 +44,24 @@ public class CarController : MonoBehaviour
 		if (OnGround())
 		{
 			Drive();
-			exploded = false;
+			
 		}
 		if (Input.GetAxis("Fire1") != 0 && exploded == false) {
-			Explode();
+			StartCoroutine(Explode());
 		}
 	}
 
-    private void Explode() 
+	IEnumerator Explode() 
 	{
 		exploded = true;
 		Instantiate(boom, transform.position, Quaternion.identity);
 
+		yield return new WaitForSeconds(0.5f);
 
 		transform.position = spawnPoint.position;
 		transform.rotation = spawnPoint.rotation;
 		speed = 0;
+		exploded = false;
 
 	}
 	bool OnGround()
