@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public Transform targetCamera;
-
     public float smoothSpeed = 0.1f;
 
     void FixedUpdate() {
