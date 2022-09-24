@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class CarController : MonoBehaviour
 {
@@ -27,9 +28,10 @@ public class CarController : MonoBehaviour
 
 	//Variablen für explosionen
 	public GameObject boom;
-	public GameObject car;
+	public Rigidbody car;
 	public Transform spawnPoint;
-	private bool exploded = false;
+	private bool playerExplosion = false;
+	private bool exploding = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -37,6 +39,14 @@ public class CarController : MonoBehaviour
 		speed = 0;
 		rotation = 0;
 	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		
+		if (collision.relativeVelocity.magnitude > 5)
+			exploding = true;
+	}
+
 
 	// Update is called once per frame
 	void FixedUpdate()
@@ -46,23 +56,29 @@ public class CarController : MonoBehaviour
 			Drive();
 			
 		}
-		if (Input.GetAxis("Fire1") != 0 && exploded == false) {
+		if ((Input.GetAxis("Fire1") != 0 && playerExplosion == false) || (exploding && playerExplosion == false)) {
 			StartCoroutine(Explode());
 		}
 	}
 
 	IEnumerator Explode() 
 	{
-		exploded = true;
-		Instantiate(boom, transform.position, Quaternion.identity);
+
+		playerExplosion = true;
+		GameObject currentBoom = Instantiate(boom, transform.position, Quaternion.identity);
+
+
+		car.velocity.Set(0,0,0);
 
 		yield return new WaitForSeconds(0.5f);
 
+
+		exploding = false;
 		transform.position = spawnPoint.position;
 		transform.rotation = spawnPoint.rotation;
 		speed = 0;
-		exploded = false;
-
+		playerExplosion = false;
+		Destroy(currentBoom);
 	}
 	bool OnGround()
 	{
