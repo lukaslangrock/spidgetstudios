@@ -1,11 +1,10 @@
-using System.Xml.Schema;
 using System;
 using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControls : MonoBehaviour
+public class CarControl : MonoBehaviour
 {
 	private float speed;
 	private float rotation;
