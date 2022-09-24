@@ -1,4 +1,4 @@
-using System.Xml.Schema;
+﻿using System.Xml.Schema;
 using System;
 using System.Numerics;
 using System.Collections;
@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-	private float speed;
+	public float speed {get; set;}
 	private float rotation;
 	public float MaxLeftSteer = -45;
 	public float MaxRightSteer = 45;

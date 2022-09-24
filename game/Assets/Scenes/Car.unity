@@ -148,6 +148,7 @@ MonoBehaviour:
   Acceleration: 10
   BreakForce: 300
   SteerStraighteningPower: 5
+  AbruptBreak: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
