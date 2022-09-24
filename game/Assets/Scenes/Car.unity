@@ -307,12 +307,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLeftSteer: -55
   MaxRightSteer: 55
-  MaxForwardSpeed: 4096
+  MaxForwardSpeed: 6969
   MaxBackwardSpeed: -69
-  EngineBreakPower: 2
-  Acceleration: 15
+  EngineBreakPower: 4.2
+  Acceleration: 21
   BreakForce: 420
-  SteerStraighteningPower: 5
+  SteerStraighteningPower: 7
   AbruptBreak: 2
   layerMask:
     serializedVersion: 2
