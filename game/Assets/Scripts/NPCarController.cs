@@ -43,7 +43,7 @@ public class NPCarController : MonoBehaviour
 
 	bool OnGround()
 	{
-		return Physics.CheckSphere(groundCheck.position, .5f, layerMask);
+		return Physics.CheckSphere(groundCheck.position, 1f, layerMask);
 	}
 
 
@@ -84,13 +84,13 @@ public class NPCarController : MonoBehaviour
 
 			if (angelToDir > 3)
 			{
-				turnAmount = 1;
+				turnAmount = 10;
 			}
 			else
 			{
 				if (angelToDir < -3)
 				{
-					turnAmount = -1;
+					turnAmount = -10;
 				}
 			}
 
