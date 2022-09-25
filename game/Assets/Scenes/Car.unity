@@ -628,14 +628,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a379f6a4c0c4bda8afe838e061a30bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLeftSteer: -55
-  MaxRightSteer: 55
-  MaxForwardSpeed: 6969
-  MaxBackwardSpeed: -69
-  EngineBreakPower: 4.2
-  Acceleration: 21
-  BreakForce: 420
-  SteerStraighteningPower: 7
+  MaxLeftSteer: -45
+  MaxRightSteer: 45
+  MaxForwardSpeed: 2048
+  MaxBackwardSpeed: -50
+  EngineBreakPower: 2
+  Acceleration: 10
+  BreakForce: 300
+  SteerStraighteningPower: 5
   AbruptBreak: 2
   layerMask:
     serializedVersion: 2

@@ -41,7 +41,7 @@ public class GuestBehavior : MonoBehaviour
             if(arrived == false)
             {
                 Debug.Log("guest picked up, hiding guest model at target");
-                if(Mathf.Abs(cc.getSpeed()) <= 20)
+                if(Mathf.Abs(cc.speed) <= 20)
                 {
                     GetComponent<MeshRenderer>().enabled = false;
                     transform.position = new Vector3(desX, -3, desY); 
@@ -50,7 +50,7 @@ public class GuestBehavior : MonoBehaviour
                 }
             }
             else
-            if(Mathf.Abs(cc.getSpeed()) <= 20)
+            if(Mathf.Abs(cc.speed) <= 20)
             {
                 Debug.Log("guest arrived at target, showing guest model at target");
                 GetComponent<Collider>().enabled = false;

@@ -10,7 +10,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class CarController : MonoBehaviour
 {
-	private float speed;
+	public float speed {get; set;}
 	private float rotation;
 	public float MaxLeftSteer = -45;
 	public float MaxRightSteer = 45;
@@ -26,7 +26,7 @@ public class CarController : MonoBehaviour
 	public LayerMask layerMask;
 	public Transform groundCheck;
 
-	//Variablen für explosionen
+	//Variablen fÃ¼r explosionen
 	public GameObject boom;
 	public Rigidbody car;
 	public Transform spawnPoint;
@@ -166,9 +166,5 @@ public class CarController : MonoBehaviour
 			transform.Translate(UnityEngine.Vector3.back * Mathf.Sqrt(-speed) * Time.deltaTime);
 			transform.Rotate(0f,-rotation*Time.deltaTime,0f);
 		}
-	}
-
-	public float getSpeed() {
-		return speed;
 	}
 }
