@@ -127,4 +127,8 @@ public class CarController : MonoBehaviour
 			transform.Rotate(0f,-rotation*Time.deltaTime,0f);
 		}
 	}
+
+	public float getSpeed() {
+		return speed;
+	}
 }
