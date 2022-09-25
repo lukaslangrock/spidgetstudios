@@ -55,7 +55,9 @@ public class GuestBehavior : MonoBehaviour
                 Debug.Log("guest arrived at target, showing guest model at target");
                 GetComponent<Collider>().enabled = false;
                 Destroy(Boden);
-                transform.position = new Vector3(desX, 3, desY); 
+                transform.position = new Vector3(desX, 3, desY);
+                GameObject objectToDisappear = GameObject.Find("Pfeil");
+                objectToDisappear.GetComponent<Renderer>().enabled = false;
             }
         }
         graceperiodLock = false;
